@@ -2,7 +2,7 @@
 
 ## functionality ready to add
 
-# Core service upgrades
+## Core service upgrades
 API layer – Install Django REST Framework + djangorestframework‑simplejwt; expose /orders/, /inventory/, /payments/ with JWT auth.
 GeeksforGeeks
 
@@ -47,3 +47,11 @@ Seed demo data, write a README with docker compose up one‑liner.
 GitHub
 
 Document AWS costs + architecture diagram for recruiters.
+
+# Web Dev
+The Backend **Node + Express** framework, to decide which data to sent to browser. 
+<br>
+1. Entry point. Often ```server.js``` or ```app.js```, to set up Express, routes, and mmiddleware. 
+2. Node does not understand how to read the user input data, so let Express to decide to use which **Routes** 
+
+We can build the middleware from scratch, or use the NPM library as external package. 

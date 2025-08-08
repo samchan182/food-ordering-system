@@ -1,6 +1,6 @@
 import qrcode # library for qr code, pillow library for identify image
 
-image = qrcode.make("http://127.0.0.1:8080") # the url where image being scan 
+image = qrcode.make("http://10.16.86.130:8000/") # the url where image being scan 
 
 '''
 Upper image is python object, make python ojbect into file
