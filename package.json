@@ -1,0 +1,24 @@
+{
+  "name": "food-ordering-system",
+  "version": "1.0.0",
+  "description": "API layer – Install Django REST Framework + djangorestframework‑simplejwt; expose /orders/, /inventory/, /payments/ with JWT auth. GeeksforGeeks",
+  "homepage": "https://github.com/zishenchan/food-ordering-system#readme",
+  "bugs": {
+    "url": "https://github.com/zishenchan/food-ordering-system/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zishenchan/food-ordering-system.git"
+  },
+  "license": "ISC",
+  "author": "Zishen Chen",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
+  }
+}
