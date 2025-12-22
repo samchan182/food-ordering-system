@@ -1,57 +1,69 @@
-# food-ordering-system
+# Food Delivery / Order Management Web App
 
-## functionality ready to add
+End-to-end online ordering system (menu → cart → checkout → order tracking) built with **Node.js + Express + PostgreSQL**, featuring **payment webhooks**, **OAuth2 login**, **event-driven inventory/order updates via Redis + queue workers**, and **Dockerized AWS deployment**.
 
-## Core service upgrades
-API layer – Install Django REST Framework + djangorestframework‑simplejwt; expose /orders/, /inventory/, /payments/ with JWT auth.
-GeeksforGeeks
+## Demo Features
 
-Async jobs – Wire Celery with Redis; move e‑mail receipts, low‑stock alerts, nightly sales CSV to tasks.
-Real Python
+- Customer:
+  - Browse menu, add to cart, checkout, view order status
+  - OAuth2 login (Google) + JWT session
+  - Payment checkout (webhook-driven confirmation)
+- Kitchen/Admin:
+  - Order queue dashboard (new → preparing → ready → completed)
+  - Inventory management (stock levels, low-stock alerts)
+- Platform:
+  - Event-driven updates with Redis + Worker queue to prevent overselling
+  - DB migrations + seed data
+  - Structured logging, health checks, tests, CI-ready
+  - Containerized (Docker Compose) + production deployment notes (AWS)
 
-Realtime kitchen screen – Switch project to ASGI and add Django Channels; stream new orders via WebSocket.
-Codez Up
+---
 
-Inventory webhooks – Create a /stripe/webhook/ endpoint; process invoice.paid to adjust stock atomically.
-blog.theodo.com
+## Architecture (High Level)
 
-Metrics & tracing – Add django-prometheus, scrape with Prometheus, visualise in Grafana dashboards.
-hodovi.cc
+**Services**
+- `api` (Express): REST APIs, auth, checkout, webhooks
+- `db` (PostgreSQL): persistent store
+- `redis`: event bus + queue backend
+- `worker`: background jobs (inventory reservation, webhook processing, reconciliation)
+- (optional) `web` (React/Next.js): UI
 
-# Container & local stack
-Docker‑Compose – Define separate web, postgres, redis, celery, nginx services; volume map static files.
-React and Django Tutorial
-TestDriven.io
+**Event Flow**
+1. User places an order → API writes `orders` + `order_items`
+2. API publishes event `order.created`
+3. Worker reserves inventory (atomic) and updates status
+4. Payment provider sends webhook → API verifies signature → publishes `payment.succeeded`
+5. Worker confirms order and transitions state
 
-Environment parity – Follow a production‑ready compose template (health‑checks, Gunicorn, named volumes).
-DEV Community
+---
 
-# CI/CD pipeline
-GitHub Actions – Run pytest, build Docker image, push to Amazon ECR on every main push.
-AWS Documentation
-Everything DevOps
+## Tech Stack
 
-# AWS deployment (cloud badge)
-Provision – Create ECR repo, ECS Fargate cluster + ALB (or use Elastic Beanstalk Docker platform for a quicker path).
-AWS Documentation
-FreeCodeCamp
+- **Backend**: Node.js, Express.js
+- **Database**: PostgreSQL
+- **Queue / Cache**: Redis + BullMQ (or equivalent)
+- **Auth**: OAuth2 (Google) + JWT
+- **Payments**: Stripe webhook pattern (or equivalent)
+- **Migrations**: Prisma / Knex (choose one and keep consistent)
+- **Tests**: Jest + Supertest (API), Playwright/Cypress (E2E optional)
+- **DevOps**: Docker, Docker Compose, GitHub Actions
+- **Deployment**: AWS (RDS + ECS/EC2), 99.9% uptime target
 
-Deploy – Actions job updates task definition and triggers a rolling deploy.
-GitHub
+---
 
-Monitor – Forward Prometheus metrics to AWS Managed Grafana or self‑host in the cluster.
-hodovi.cc
+## Repository Structure
 
-# Polishing touches
-Seed demo data, write a README with docker compose up one‑liner.
-GitHub
-
-Document AWS costs + architecture diagram for recruiters.
-
-# Web Dev
-The Backend **Node + Express** framework, to decide which data to sent to browser. 
-<br>
-1. Entry point. Often ```server.js``` or ```app.js```, to set up Express, routes, and mmiddleware. 
-2. Node does not understand how to read the user input data, so let Express to decide to use which **Routes** 
-
-We can build the middleware from scratch, or use the NPM library as external package. 
+```txt
+.
+├── apps
+│   ├── api                 # Express app (REST, auth, webhooks)
+│   ├── worker              # Queue workers (BullMQ)
+│   └── web                 # (optional) React/Next.js frontend
+├── packages
+│   ├── db                  # DB schema/migrations + client
+│   ├── shared              # shared types, utils
+│   └── config              # env validation, lint configs
+├── docker                  # docker files, compose overrides
+├── .github/workflows       # CI pipelines
+├── docs                    # architecture, API docs, runbooks
+└── README.md
