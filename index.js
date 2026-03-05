@@ -4,6 +4,7 @@
 
 import express from 'express';
 import pg from "pg";
+import morgan from 'morgan';
 
 /**
  * For index.js to set up express
@@ -24,12 +25,23 @@ const database = new pg.Client({
 });
 
 /**
+ * middleware is pre-handling
+ */
+app.use(morgan('tiny')); 
+
+/**
  * Regulate routes of communication between client and server
  */
 app.get('/', (req, res) => {
-  res.send("Hello, My Backend is running");
+  res.send("Hello, My Backend is runningHere is only for testing the npm modules");
 });
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
+});
+
+// Test in Postman, doing post request with body
+app.post('/', (req, res) => {
+  console.log(req.body); // This would show the "Sam" data in your terminal
+  res.send('Data received successfully!');
 });

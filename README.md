@@ -2,6 +2,12 @@
 
 End-to-end online ordering system (menu → cart → checkout → order tracking) built with **Node.js + Express + PostgreSQL**, featuring **payment webhooks**, **OAuth2 login**, **event-driven inventory/order updates via Redis + queue workers**, and **Dockerized AWS deployment**.
 
+## Set up 
+- The Printer:
+  - Epson T-MU220 series printer (Dot-matrix printer). Thermal printer is largerly affected by hot surface due to the concern of kitchen environment. 
+  - 
+
+
 ## Demo Features
 
 - Customer:
