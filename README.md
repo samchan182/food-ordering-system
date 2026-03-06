@@ -1,11 +1,16 @@
 # Food Delivery / Order Management Web App
 
-End-to-end online ordering system (menu → cart → checkout → order tracking) built with **Node.js + Express + PostgreSQL**, featuring **payment webhooks**, **OAuth2 login**, **event-driven inventory/order updates via Redis + queue workers**, and **Dockerized AWS deployment**.
+It's a end-to-end online ordering system (menu → cart → checkout → order tracking) built with **Node.js + Express + PostgreSQL** featuring:
+- **Payment webhooks**
+- **OAuth2 login**
+- **Event-driven inventory/order updates via Redis + queue workers**
+- **Dockerized AWS deployment** 
+- **WeChat Mini-Program interface (a lightweight application embedded within Tencent’s widely used 'super-app' ecosystem)**
 
 ## Set up 
-- The Printer:
-  - Epson T-MU220 series printer (Dot-matrix printer). Thermal printer is largerly affected by hot surface due to the concern of kitchen environment. 
-  - 
+- The Physcial Printer:
+  - Epson TM-U220II series printer (Dot-matrix, due to the thermal printer is largerly affected by hot surface under kitchen environment)
+  - We use <a href="https://epson.com/Support/Point-of-Sale/Receipt-Printers/Epson-TM-U220II-Series/s/SPT_C31CL26A9991">official Epson's driver SDK</a> to give signal to printer to print the paper order to kitchen. 
 
 
 ## Demo Features
