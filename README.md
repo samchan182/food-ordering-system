@@ -1,16 +1,24 @@
 # Food Delivery / Order Management Web App
 
-It's a end-to-end online ordering system (menu → cart → checkout → order tracking) built with **Node.js + Express + PostgreSQL** featuring:
+It's a end-to-end online ordering system (menu → cart → checkout → order) built with **Node.js + Express + PostgreSQL** featuring:
 - **Payment webhooks**
 - **OAuth2 login**
 - **Event-driven inventory/order updates via Redis + queue workers**
 - **Dockerized AWS deployment** 
-- **WeChat Mini-Program interface (a lightweight application embedded within Tencent’s widely used 'super-app' ecosystem)**
+- **WeChat Mini-Program ordering interface (a lightweight application embedded within Tencent’s widely used 'super-app' ecosystem)**
 
-## Set up 
-- The Physcial Printer:
-  - Epson TM-U220II series printer (Dot-matrix, due to the thermal printer is largerly affected by hot surface under kitchen environment)
-  - We use <a href="https://epson.com/Support/Point-of-Sale/Receipt-Printers/Epson-TM-U220II-Series/s/SPT_C31CL26A9991">official Epson's driver SDK</a> to give signal to printer to print the paper order to kitchen. 
+## Physcial Order Printer Set up 
+**Hardware model :** Epson TM-U220 series printer 
+
+**Connection :**: Ethernet / local network
+
+**Install the hareware driver :**
+- We use <a href="https://support.epson.net/setupnavi/?LG2=EN&OSC=MI&PINF=menu&MKN=TM-U220&GROUP=">official Epson's driver </a> to give signal to printer to print the paper order to kitchen, and <a href="https://download4.epson.biz/sec_pubs/bs/pdf/TM-U220_std_trg_en_revI.pdf">manual instruction guide </a> to handle phscial hardware
+- Be careful for your choice of Operating System (OS) when you download
+- Expend the **Driver** section, find the lastest one to downlaod, and run the installer, add your pinter to your computer
+- **CRITICAL STEP - Naming:** In the "Name:" field, you **must** name the printer exactly as follows:
+   `EPSON_TM_U220`
+   *(Note: If you use a different name, you must update the `PRINTER_NAME` constant in the backend configuration file, otherwise the `lp` command will fail to find the destination).*
 
 
 ## Demo Features
