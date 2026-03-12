@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Ordering System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="max-w-4xl mx-auto p-6">
+        <header class="mb-8 text-center">
+            <h1 class="text-4xl font-bold text-gray-800">Fresh Bites Menu</h1>
+            <p class="text-gray-500 mt-2">Order straight to the kitchen</p>
+        </header>
+
+        <div id="app-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-2">
+                <h2 class="text-2xl font-semibold mb-4 border-b pb-2">Our Dishes</h2>
+                <div id="menu-list" class="space-y-4">
+                    <p class="text-gray-500">Loading menu from server...</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md h-fit">
+                <h2 class="text-2xl font-semibold mb-4 border-b pb-2">Your Cart</h2>
+                <ul id="cart-list" class="mb-4 space-y-2">
+                    <li class="text-gray-400 text-sm">Cart is empty</li>
+                </ul>
+                <div class="border-t pt-4 font-bold text-lg flex justify-between">
+                    <span>Total:</span>
+                    $<span id="cart-total">0.00</span>
+                </div>
+                <button id="checkout-btn" class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition hidden">
+                    Checkout Now
+                </button>
+            </div>
+        </div>
+
+        <div id="success-message" class="hidden text-center bg-green-100 border border-green-400 text-green-700 px-4 py-8 rounded relative mt-8">
+            <h2 class="text-3xl font-bold mb-2">Order Confirmed!</h2>
+            <p>Your order has been sent to the kitchen. Order ID: <span id="order-id-display"></span></p>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

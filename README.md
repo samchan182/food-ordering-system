@@ -13,9 +13,8 @@ It's a end-to-end online ordering system (menu → cart → checkout → order) 
 **Connection :**: Ethernet / local network
 
 **Install the hareware driver :**
-- We use <a href="https://support.epson.net/setupnavi/?LG2=EN&OSC=MI&PINF=menu&MKN=TM-U220&GROUP=">official Epson's driver </a> to give signal to printer to print the paper order to kitchen, and <a href="https://download4.epson.biz/sec_pubs/bs/pdf/TM-U220_std_trg_en_revI.pdf">manual instruction guide </a> to handle phscial hardware
-- Be careful for your choice of Operating System (OS) when you download
-- Expend the **Driver** section, find the lastest one to downlaod, and run the installer, add your pinter to your computer
+- We use <a href="https://support.epson.net/setupnavi/?LG2=EN&OSC=MI&PINF=menu&MKN=TM-U220&GROUP=">official Epson's driver </a> to give signal to printer to print the paper order to kitchen, <a href="https://download4.epson.biz/sec_pubs/bs/pdf/TM-U220_std_trg_en_revI.pdf">manual instruction guide </a> is for handling phscial hardware
+- Be careful for your choice of Operating System (OS) when you download your driver
 - **CRITICAL STEP - Naming:** In the "Name:" field, you **must** name the printer exactly as follows:
    `EPSON_TM_U220`
    *(Note: If you use a different name, you must update the `PRINTER_NAME` constant in the backend configuration file, otherwise the `lp` command will fail to find the destination).*
