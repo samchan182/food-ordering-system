@@ -18,7 +18,9 @@ async function fetchMenu() {
         menu = await response.json();
         renderMenu();
     } catch (error) {
-        menuList.innerHTML = `<p class="text-red-500">Error loading menu. Is the backend running?</p>`;
+        // Now this will ONLY trigger if the network actually fails
+        console.error("Frontend caught an error:", error);
+        menuList.innerHTML = `<p class="text-red-500">Error loading menu. Check browser console.</p>`;
     }
 }
 
@@ -31,8 +33,8 @@ function renderMenu() {
         div.innerHTML = `
             <div>
                 <h3 class="font-bold text-lg">${item.name}</h3>
-                <p class="text-sm text-gray-500">${item.desc}</p>
-                <span class="text-blue-600 font-semibold">$${item.price.toFixed(2)}</span>
+                <p class="text-sm text-gray-500">${item.description}</p>
+                <span class="text-blue-600 font-semibold">$${parseFloat(item.price).toFixed(2)}</span>
             </div>
             <button onclick="addToCart(${item.id})" class="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded text-sm">
                 Add
@@ -61,12 +63,13 @@ function renderCart() {
     let total = 0;
 
     cart.forEach((item, index) => {
-        total += item.price;
+        // CHANGED: Must parse the price before doing math to prevent string concatenation
+        total += parseFloat(item.price); 
         const li = document.createElement('li');
         li.className = 'flex justify-between text-sm';
         li.innerHTML = `
             <span>${item.name}</span>
-            <span class="font-semibold">$${item.price.toFixed(2)}</span>
+            <span class="font-semibold">$${parseFloat(item.price).toFixed(2)}</span>
         `;
         cartList.appendChild(li);
     });
