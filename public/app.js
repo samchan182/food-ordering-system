@@ -10,6 +10,8 @@ const checkoutBtn = document.getElementById('checkout-btn');
 const appContainer = document.getElementById('app-container');
 const successMessage = document.getElementById('success-message');
 const orderIdDisplay = document.getElementById('order-id-display');
+const authBar = document.getElementById('auth-bar');
+const loginScreen = document.getElementById('login-screen');
 
 // 1. Fetch menu from the backend
 async function fetchMenu() {
@@ -101,4 +103,18 @@ checkoutBtn.addEventListener('click', async () => {
 });
 
 // Initialize the app
-fetchMenu();
+async function init() {
+    const res = await fetch('/auth/me');
+    const user = await res.json();
+
+    if (!user.loggedIn) {
+        appContainer.classList.add('hidden');
+        loginScreen.classList.remove('hidden');
+        return;
+    }
+
+    authBar.innerHTML = `Hello, <strong>${user.name}</strong> &nbsp;|&nbsp; <a href="/auth/logout" class="text-blue-500 underline">Logout</a>`;
+    fetchMenu();
+}
+
+init();

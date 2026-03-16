@@ -19,8 +19,13 @@
   },
   "dependencies": {
     "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "https-proxy-agent": "^8.0.0",
     "morgan": "^1.10.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
     "pg": "^8.16.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"

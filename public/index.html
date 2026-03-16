@@ -11,7 +11,16 @@
         <header class="mb-8 text-center">
             <h1 class="text-4xl font-bold text-gray-800">Fresh Bites Menu</h1>
             <p class="text-gray-500 mt-2">Order straight to the kitchen</p>
+            <div id="auth-bar" class="mt-4 text-sm text-gray-600"></div>
         </header>
+
+        <!-- Login screen (shown when not logged in) -->
+        <div id="login-screen" class="hidden text-center py-16">
+            <p class="text-gray-500 mb-6">Please log in to view the menu and place an order.</p>
+            <a href="/auth/google" class="bg-white border border-gray-300 text-gray-700 font-semibold px-6 py-3 rounded shadow hover:shadow-md transition">
+                Login with Google
+            </a>
+        </div>
 
         <div id="app-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="md:col-span-2">
