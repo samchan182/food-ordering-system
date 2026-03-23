@@ -15,22 +15,6 @@ Small restaurants typically rely on manual order-taking (paper, phone, or WhatsA
 
 ---
 
-## What's Currently Built
-
-| Feature | Status |
-|---|---|
-| Menu display from PostgreSQL | Done |
-| Add to cart, calculate total | Done |
-| Google OAuth2 login / logout | Done |
-| Session management (Passport) | Done |
-| Auth-protected checkout route | Done |
-| Frontend SPA (vanilla JS + Tailwind) | Done |
-| Order persistence to database | Placeholder — returns mock order ID |
-| Epson kitchen printer integration | Placeholder — not yet connected |
-| Payment processing | Not yet implemented |
-| Inventory management | Not yet implemented |
-
----
 
 ## Framework & Modules
 
